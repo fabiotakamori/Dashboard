@@ -1,15 +1,15 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+   <NavBar/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import NavBar from "./components/Navbar.vue"
 
 export default {
   name: 'App',
+  /*componente que estamos usando*/
   components: {
-    HelloWorld
+    NavBar
   }
 }
 </script>
@@ -24,3 +24,7 @@ export default {
   margin-top: 60px;
 }
 </style>
+<!--
+App.vue(aplicação principal) ->views(rotas de páginas)->components(menores)
+
+-->

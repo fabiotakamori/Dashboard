@@ -1,0 +1,6 @@
+/*Sass podemos usar classe ou tag dentro da outra podendo ser mais específico
+.login{h1{}} pegue a classe login com a tag h1 oqual está dentro
+@ indica raiz do projeto
+*/
+@import  '@/assets/scss/_main';
+
