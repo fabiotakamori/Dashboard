@@ -19,6 +19,7 @@ const routes = [
         name: "products",
         component: Products
     }
+    
 ]
 
 /*1-passamos history e as rotas*/

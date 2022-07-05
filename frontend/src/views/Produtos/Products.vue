@@ -4,7 +4,7 @@
     <DashBoardComponent>
       <!--existe o slot padrao e por nome, quando usamor por nome usamors #, quando #nome = name, havera a renderizacao-->
       <template #paginaslot>
-        Produtos
+        <header>produtos</header>
       </template>
     </DashBoardComponent>
   </Dashboard>
@@ -25,3 +25,6 @@ export default {
 
 }
 </script> 
+
+<style lang="scss" src="./styles.scss">
+</style>
