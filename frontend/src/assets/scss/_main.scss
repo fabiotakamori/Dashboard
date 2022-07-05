@@ -8,20 +8,33 @@
 /*em sass podemos atribuir para classe e para clase filha etc..*/
 .login{
 
+    /*
+    column um abaixo do outro se for row é um ao lado
+    center = alinha o conteudo ao centro
+    */
     display: flex;
     justify-content: center;
+    background-color: $grey;
+  
+    //flex-direction: column;
 
     .content-login{
         width: 600px;
         height: 500px;
         background-color: $green;
         border-radius: 7px;  
+        padding: 0px 70px 0px 70px;
 
         h1{
             margin-top: 20px;
             color:rgb(255, 255, 255);
+            font-size: 25px;
             text-shadow: 0.1em 0.1em 0.2em rgb(99, 96, 96);
 
+        }
+        form button.btn-primary{
+            margin-top: 20px;
+            background-color: rgb(0, 153, 95);
         }
     }
 }

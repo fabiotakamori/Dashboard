@@ -1,0 +1,42 @@
+/*Sass podemos usar classe ou tag dentro da outra podendo ser mais específico
+.login{h1{}} pegue a classe login com a tag h1 oqual está dentro
+@ indica raiz do projeto
+*/
+@import  '@/assets/scss/_main';
+
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+#app{
+    margin: 0px;
+}
+.main{
+    width: 100%;
+    height: 100%;
+    display: flex;
+
+    .sidebar{
+        width: 250px;
+        height: 100vh;
+        background: $green;
+    }
+    .content-right{
+        width: calc(100% - 210px);
+        height: 100vh;
+        background-color: white;
+
+        .navbar{
+            width: 100%;
+            //height: 60px;
+            background-color: rgb(109, 228, 190);
+            padding: 20px;
+        }
+        .pages{
+            width: 100%;
+            height: 91vh;
+            background-color: rgb(255, 255, 255);
+        }
+    }
+}
