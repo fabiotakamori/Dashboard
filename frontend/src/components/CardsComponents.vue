@@ -1,15 +1,15 @@
 <template>
     <div class="mycards">
         <div class="top">
-            <h3>Clientes</h3>
+            <h3>{{ type }}</h3>
             <p class="porcent">
                  <font-awesome-icon :icon="['fas','arrow-up']" />
-                7%
+                {{percent}}
             </p>
         </div>
         <div class="footer">
-            <font-awesome-icon :icon="['fas','user']" />
-            <p class="qtd">957</p>
+            <font-awesome-icon :icon="['fas',icon]" />
+            <p class="qtd">{{qtd}}</p>
         </div>
     </div>
 </template>
@@ -17,7 +17,16 @@
 <script>
 
 export default{
+    name: 'CardsComponents',
+    /*toda prop, que irá receber do componente pai no caso da home, podendo ser chamado em template
+    sendo possível tipar a variavel*/
+    props:{
+        type: String,
+        percent: String,
+        icon: String,
+        qtd: String
 
+    }
 }
 </script>
 
@@ -28,6 +37,7 @@ export default{
         display: flex;
         flex-direction: column;
         width: 200px;
+        height: 100px;
         background-color:   $green;
         padding: 15px;
         color: white;
@@ -39,10 +49,19 @@ export default{
             svg{
                 color: green;
             }
+            .porcent{
+                color: green;
+            }
         }
         .footer{
             display: flex;
              justify-content: space-between;
+             svg{
+                font-size: 30px;
+             }
+             .qtd{
+                font-size: 25px;
+             }
         }
     }
 </style>
