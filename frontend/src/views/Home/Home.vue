@@ -29,7 +29,13 @@
               <!--V-BIND = : permite que passemos classe ou estilo
               https://vuejs.org/api/built-in-directives.html
               -->
-              <ListsComponents :usersA="usersA"/>
+              <ListsComponents :data="usersA"  description="Clientes" :columns="['Nome', 'E-mail']"/>
+            </div>
+             <div class="col-12 col-md-6">
+              <!--V-BIND = : permite que passemos classe ou estilo
+              https://vuejs.org/api/built-in-directives.html
+              -->
+              <ListsComponents :data="usersA" description="Produtos" :columns="['Nome', 'Valor']"/>
             </div>
           </div>
         </div>

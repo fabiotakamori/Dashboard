@@ -1,7 +1,7 @@
 <template>
     <div class="list">
         <div class="top">
-            <p>Clientes</p>
+            <p>{{description}} <span class="badge badge-info">{{data.length}}</span></p> 
             <hr>
         </div>
         <div class="content">
@@ -9,13 +9,13 @@
                 <thead>
                     <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">email</th>
+                    <th scope="col">{{columns[0]}}</th>
+                    <th scope="col">{{columns[1]}}</th>
                     </tr>
                 </thead>
                 <tbody>
                     <!--id pois n podemos ter mesmo valor de chave-->
-                    <tr v-for="user in usersA" :key="user.id">
+                    <tr v-for="user in data" :key="user.id">
                     <!--chamando os nomes dos campos-->
                     <th scope="row"><p class="users">{{user.id}}</p></th>
                     <td><p class="users">{{user.name}}</p></td>
@@ -31,12 +31,15 @@
 export default{
     name: 'ListsComponent',
     props: {
-        usersA:Array
+        data:Array,
+        description: String,
+        columns: []
     }
 }
 </script>
 
 <style lang="scss">
+
 .list{
     width: 100%;
     padding: 20px;
@@ -45,6 +48,12 @@ export default{
     background-color: #fff;
     .users{
         font-size: 12px;
+    }
+    .top{
+        .badge{
+            background-color: rgb(7, 188, 94);
+            
+        }
     }
 }
 </style>

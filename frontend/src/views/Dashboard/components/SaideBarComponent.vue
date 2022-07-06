@@ -18,6 +18,10 @@
                     <router-link :to="{name: 'home'}">Início</router-link>    
                 </li>
                 <li>
+                    <font-awesome-icon :icon="['fas','home']" />
+                    <router-link :to="{name: 'clients'}">Clientes</router-link>    
+                </li>
+                <li>
                     <font-awesome-icon :icon="['fas','box']" />
                     <router-link :to="{name: 'products'}">Produtos</router-link>
                 </li>
