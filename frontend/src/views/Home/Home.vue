@@ -9,16 +9,16 @@
           <div class="container">
             <div class="row">
               <div class="col-md-3">
-                  <CardsComponentsVue type="Clientes" percent="7%" icon="user" qtd="957" />
+                  <CardsComponentsVue type="Clientes" percent="7%" icon="user" :qtd="clients.length"/>
               </div>
               <div class="col-md-3">
-                  <CardsComponentsVue type="Produtos" percent="12%" icon="box" qtd="360"/>
+                  <CardsComponentsVue type="Produtos" percent="12%" icon="box" :qtd="products.length"/>
               </div>
               <div class="col-md-3">
-                  <CardsComponentsVue type="Serviços" percent="3%" icon="store" qtd="270"/>
+                  <CardsComponentsVue type="Serviços" percent="3%" icon="store" :qtd="products.length"/>
               </div>
               <div class="col-md-3">
-                  <CardsComponentsVue type="Relatórios" percent="25%" icon="chart-bar" qtd="30"/>
+                  <CardsComponentsVue type="Relatórios" percent="25%" icon="chart-bar" :qtd="products.length"/>
               </div>
             </div>
           </div>
@@ -28,14 +28,16 @@
             <div class="col-12 col-md-6">
               <!--V-BIND = : permite que passemos classe ou estilo
               https://vuejs.org/api/built-in-directives.html
-              -->
-              <ListsComponents :data="usersA"  description="Clientes" :columns="['Nome', 'E-mail']"/>
+               -->
+              <ListsComponents :data="clients"  description="Clientes" :columns="['Nome', 'E-mail']"/>
+             
             </div>
              <div class="col-12 col-md-6">
               <!--V-BIND = : permite que passemos classe ou estilo
               https://vuejs.org/api/built-in-directives.html
-              -->
-              <ListsComponents :data="usersA" description="Produtos" :columns="['Nome', 'Valor']"/>
+             -->
+              <ListsComponents :data="products" description="Produtos" :columns="['Nome', 'Valor']"/>
+               
             </div>
           </div>
         </div>
@@ -59,7 +61,8 @@ export default {
   /*guardo minahs variaveis, estado local NO COMPONENTE que retorna lista de objetos*/
   data(){
     return{
-      usersA:[]
+     clients:[],
+     products:[]
     }
   },
   /*Dentro do ciclo de vida do vue, quando 
@@ -74,15 +77,28 @@ export default {
     /*quando usado await temos que usar async*/
     async getUsers(){
       /*https://jsonplaceholder.typicode.comawai ele espera a execucao para renderizar os demais*/
-      const response = await axios.get('https://jsonplaceholder.typicode.com/users')
-      
+      //const response = await axios.get('https://jsonplaceholder.typicode.com/users')
       //veja que o response em si é um objeto e estamos usando seus atributos
+      /*
       if(response.status ==200){
         this.usersA = response.data
       }else{
         console.log("erro na API")
       }
-      
+      */
+     try{
+         let response = await axios.get('/')
+         if(response.status=200){
+            this.products = response.data.products
+            this.clients = response.data.clients
+      }else{
+        console.log("Erro na API")
+      }
+     }catch(error){
+        console.log(error.response)
+     }
+     
+
     }
   },
   components:{

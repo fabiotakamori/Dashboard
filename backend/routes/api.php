@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ApiDash\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+/*
+irá fornecer API para HomeController, chamando método index
+app->http->Controllers
+para evitar problema de cors, precisa realizar o procedimento a baixo
+https://dev.to/thiagoluna/resolvendo-problema-de-access-control-allow-origin-cors-no-laravel-57g5
+*/
+Route::get('/', [HomeController::class, "index"]);
+
+//Route::get('/series',[SeriesController::class, "index"]);
