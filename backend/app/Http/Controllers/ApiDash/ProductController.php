@@ -26,13 +26,25 @@ class ProductController extends Controller
         $productModel = Product::find($product);
 
         if($productModel === null){
-            return response()->json(['Error'=>'404',"cause"=>"ID inválido"],400);
+            return response()->json(['Error'=>'404',"cause"=>"Invalid id"],400);
         }else{
-            return response()->json([$productModel],200);
+            return response()->json(["Product"=>$productModel, "Satus"=>200],200);
         }
         //return $productModel;
     }
 
     //atualização
+    public function update(Product $product, Request $request){
+        $product->fill($request->all());
+        $product->save();
+        return response()->json(["Message"=>"Sucess", "Satus"=>200],200);
+    }
+
+    //deletar
+    public function destroy(int $product){
+         Product::destroy($product);
+         return response()->json(["Message"=>"Deleted","Status"=>200]);
+    }
+
     
 }
