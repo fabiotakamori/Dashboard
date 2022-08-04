@@ -10,15 +10,20 @@ return new class extends Migration
      * Run the migrations.
      *
      * @return void
+     * 
      */
+
+   
+
     public function up()
     {
-        Schema::create('clients', function (Blueprint $table) {
-            $table->increments('product_id');
+        Schema::create('products', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('name');
-            $table->string('email');
-            $table->string('phone');
-            $table->softdeletes();
+            $table->decimal('price',10,2);
+            $table->string('reference');
+            $table->integer('stock');
+            $table->string('ean');
             $table->timestamps();
         });
     }
@@ -30,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clients');
+        //
     }
 };

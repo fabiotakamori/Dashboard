@@ -3,7 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiDash\HomeController;
-
+use App\Http\Controllers\ApiDash\ProductController;
+use App\Http\Controllers\ApiDash\ClientController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -24,7 +25,12 @@ irá fornecer API para HomeController, chamando método index
 app->http->Controllers
 para evitar problema de cors, precisa realizar o procedimento a baixo
 https://dev.to/thiagoluna/resolvendo-problema-de-access-control-allow-origin-cors-no-laravel-57g5
+
+Route::resource: O método Route::resource é um controlador RESTful
 */
 Route::get('/', [HomeController::class, "index"]);
+Route::resource('/products',ProductController::class );
+Route::get('/clients', [ClientController::class, "index"]);
+Route::get('/client/{id}', [ClientController::class, "index"]);
 
-//Route::get('/series',[SeriesController::class, "index"]);
+

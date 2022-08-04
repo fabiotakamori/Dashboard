@@ -5,11 +5,8 @@ namespace App\Models\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Client extends Model
+class Product extends Model
 {
+    protected $fillable = ['name', 'price', 'reference','stock','ean'];
     use HasFactory;
 }
-/*
-Explicação do Eloquent/Model
-https://imasters.com.br/back-end/como-criar-as-models-do-seu-projeto-com-eloquent-no-laravel
- */
