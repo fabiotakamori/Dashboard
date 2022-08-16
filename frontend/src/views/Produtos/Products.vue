@@ -1,4 +1,5 @@
 <template>
+
   <Dashboard>
     <!--Tudo que é colocado dentro do componente é direcionado para o slot-->
     <DashBoardComponent>
@@ -7,6 +8,7 @@
         <FormProduct/>
       </template>
     </DashBoardComponent>
+    
   </Dashboard>
 
 </template>

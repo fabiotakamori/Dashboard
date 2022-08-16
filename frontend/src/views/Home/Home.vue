@@ -24,6 +24,7 @@
           </div>
         </div>
         <div class="container mt-5">
+
           <div class="row">
             <div class="col-12 col-md-6">
               <!--V-BIND = : permite que passemos classe ou estilo https://vuejs.org/api/built-in-directives.html-->
@@ -84,7 +85,7 @@ export default {
     },
 
     async load(){
-      console.log("carregar")
+      
      try{
          let respproducts = await axios.get('http://127.0.0.1:8000/api/products')
          let respclients = await axios.get('http://127.0.0.1:8000/api/clients')
@@ -92,9 +93,9 @@ export default {
             this.products =respproducts.data
             this.clients = respclients.data
             console.log(this.products)
-      }else{
-        console.log("Erro na API")
-      }
+          }else{
+            console.log("Erro na API")
+          }
      }catch(error){
         console.log(error.response)
      }

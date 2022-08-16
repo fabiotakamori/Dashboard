@@ -1,5 +1,4 @@
 <template>
-
   <div class="main">
     <div class="login">
       <div class="content-login">
@@ -25,20 +24,16 @@
 
 <script>
   export default {
-    /*Nome do nosso componentes*/
+
     name: 'LoginComponent',
 
-    /* */
     data(){
         return{
 
         }
     },
-
-    /*Metodos que é o objeto, criamos os métodos aqui*/
     methods:{
       realizarLogin(){
-        /*realiza o redirecionamento, conseguimos usar o objeto pois no main.js dizemo use e o objeto*/
         this.$router.push({name:'home'})
       }
     }

@@ -20,6 +20,7 @@ import FormClient from "@/components/FormClient/FormClient.vue";
 export default {
 
   name: "ClientsComponents",
+  
   components:{
     DashBoardComponent,
     FormClient

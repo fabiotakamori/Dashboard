@@ -16,9 +16,6 @@ e nele colocamos os demais componentes */
 library.add(fas);
 /*axios global para url base*/
 axios.defaults.baseURL = 'http://127.0.0.1:8000/api/';
-
-
-
 /*usamos a rota e o componente fontawesome de forma global*/
 createApp(App)
 .component("font-awesome-icon", FontAwesomeIcon)
