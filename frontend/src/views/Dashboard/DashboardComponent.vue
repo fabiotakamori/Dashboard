@@ -10,7 +10,9 @@
             <div class="pages">
                 <!--O slot serve para que possamos renderizar conteudo em outro componente aqui dentro
                 -->
-               <slot name="paginaslot"></slot>
+               <slot name="paginaslot">
+              
+               </slot>
             </div>
         </div>
     </div>

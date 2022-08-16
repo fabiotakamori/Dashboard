@@ -4,7 +4,7 @@
     <DashBoardComponent>
       <!--existe o slot padrao e por nome, quando usamor por nome usamors #, quando #nome = name, havera a renderizacao-->
       <template #paginaslot>
-        <header>Clientes</header>
+        <FormClient/>
       </template>
     </DashBoardComponent>
   </Dashboard>
@@ -15,13 +15,15 @@
 <script>
 
 import DashBoardComponent from "../Dashboard/DashboardComponent.vue";
+import FormClient from "@/components/FormClient/FormClient.vue";
 
 export default {
 
   name: "ClientsComponents",
   components:{
-    DashBoardComponent
-  }
+    DashBoardComponent,
+    FormClient
+}
 
 }
 </script> 

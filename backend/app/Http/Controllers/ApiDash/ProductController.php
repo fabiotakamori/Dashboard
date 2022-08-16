@@ -17,7 +17,7 @@ class ProductController extends Controller
 
     //Para criação precisa configurar o fillable no model
     public function store(Request $request){
-        return response()->json(Product::create($request->all()),200);
+        return response()->json(["Product"=>Product::create($request->all()), "Message"=>"Created"],200);
     }
 
     //laravel pega o id no show
@@ -34,10 +34,16 @@ class ProductController extends Controller
     }
 
     //atualização
-    public function update(Product $product, Request $request){
-        $product->fill($request->all());
-        $product->save();
-        return response()->json(["Message"=>"Sucess", "Satus"=>200],200);
+    public function update(int $id, Request $request){
+        $product = Product::find($id);
+        
+        if($product == null){
+            return response()->json(['Error'=>'404',"cause"=>"Invalid id"],400);
+        }else{
+            $product->fill($request->all());
+            $product->save();
+            return response()->json(["Message"=>"Sucess", "Satus"=>200],200);
+        }
     }
 
     //deletar

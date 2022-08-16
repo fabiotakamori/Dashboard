@@ -18,7 +18,7 @@
                   <CardsComponentsVue type="Serviços" percent="3%" icon="store" :qtd="products.length"/>
               </div>
               <div class="col-md-3">
-                  <CardsComponentsVue type="Relatórios" percent="25%" icon="chart-bar" :qtd="products.length"/>
+                  <CardsComponentsVue type="Relatórios" percent="5%" icon="chart-bar" :qtd="products.length"/>
               </div>
             </div>
           </div>
@@ -26,17 +26,13 @@
         <div class="container mt-5">
           <div class="row">
             <div class="col-12 col-md-6">
-              <!--V-BIND = : permite que passemos classe ou estilo
-              https://vuejs.org/api/built-in-directives.html
-               -->
-              <ListsComponents :data="clients"  description="Clientes" :columns="['Nome', 'E-mail']"/>
+              <!--V-BIND = : permite que passemos classe ou estilo https://vuejs.org/api/built-in-directives.html-->
+              <ListsComponents :data="clients"  @loadTema="load" description="Clientes" :columns="['Nome', 'E-mail']"/>
              
             </div>
              <div class="col-12 col-md-6">
-              <!--V-BIND = : permite que passemos classe ou estilo
-              https://vuejs.org/api/built-in-directives.html
-             -->
-              <ListsComponents :data="products" description="Produtos" :columns="['Nome', 'Valor']"/>
+              <!--V-BIND = : permite que passemos classe ou estilo-->
+              <ListsComponents :data="products" @loadTema="load" description="Produtos" :columns="['Nome', 'Valor']"/>
                
             </div>
           </div>
@@ -58,47 +54,50 @@ const axios = require('axios')
 
 export default {
   name: "HomeComponent",
-  /*guardo minahs variaveis, estado local NO COMPONENTE que retorna lista de objetos*/
+  /*guardo estado do componente, estado local NO COMPONENTE que retorna lista de objetos*/
   data(){
     return{
      clients:[],
      products:[]
     }
   },
-  /*Dentro do ciclo de vida do vue, quando 
-  usamos mounted, ele realiza consulta antes da montagem renderização
-  https://www.digitalocean.com/community/tutorials/vuejs-component-lifecycle-pt
-  no caso iremos chamar a função get
-  */
+  /*Dentro do ciclo de vida do vue, quando usamos mounted, ele realiza consulta antes da montagem renderização*/
  mounted(){
   this.getUsers();
  },
   methods:{
     /*quando usado await temos que usar async*/
     async getUsers(){
-      /*https://jsonplaceholder.typicode.comawai ele espera a execucao para renderizar os demais*/
-      //const response = await axios.get('https://jsonplaceholder.typicode.com/users')
-      //veja que o response em si é um objeto e estamos usando seus atributos
-      /*
-      if(response.status ==200){
-        this.usersA = response.data
-      }else{
-        console.log("erro na API")
-      }
-      */
      try{
-         let response = await axios.get('/')
-         if(response.status=200){
-            this.products = response.data.products
-            this.clients = response.data.clients
+         let respproducts = await axios.get('http://127.0.0.1:8000/api/products')
+         let respclients = await axios.get('http://127.0.0.1:8000/api/clients')
+         if(respproducts.status=200){
+            this.products =respproducts.data
+            this.clients = respclients.data
+            console.log(this.products)
       }else{
         console.log("Erro na API")
       }
      }catch(error){
         console.log(error.response)
      }
-     
+    },
 
+    async load(){
+      console.log("carregar")
+     try{
+         let respproducts = await axios.get('http://127.0.0.1:8000/api/products')
+         let respclients = await axios.get('http://127.0.0.1:8000/api/clients')
+         if(respproducts.status=200){
+            this.products =respproducts.data
+            this.clients = respclients.data
+            console.log(this.products)
+      }else{
+        console.log("Erro na API")
+      }
+     }catch(error){
+        console.log(error.response)
+     }
     }
   },
   components:{

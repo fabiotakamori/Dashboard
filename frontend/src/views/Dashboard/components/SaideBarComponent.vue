@@ -19,11 +19,27 @@
                 </li>
                 <li>
                     <font-awesome-icon :icon="['fas','home']" />
-                    <router-link :to="{name: 'clients'}">Clientes</router-link>    
+                    <span>Clientes</span> 
+                    <ul>
+                        <li>
+                           <router-link :to="{name: 'clients'}">Cadastrar clientes</router-link>
+                        </li>
+                        <li>
+                            Editar cliente
+                        </li>
+                    </ul>
                 </li>
                 <li>
                     <font-awesome-icon :icon="['fas','box']" />
-                    <router-link :to="{name: 'products'}">Produtos</router-link>
+                    <span>Produtos</span>
+                    <ul>
+                        <li>
+                            <router-link :to="{name: 'products'}">Cadastrar produtos</router-link>
+                        </li>
+                        <li>
+                            Editar produto
+                        </li>
+                    </ul>
                 </li>
                 <li>
                     <font-awesome-icon :icon="['fas','store']" />
@@ -99,6 +115,30 @@ export default{
             }
             svg{
                 margin-right: 10px;
+            }
+            span{
+                font-weight: bold;
+                color:white
+            }
+        }
+    }
+    .menu {
+        li{
+            ul{
+                position: relative;
+                display: none;
+                li:hover{
+                    background: #8bdbba;
+                    color: white;
+                   
+                }
+            }   
+        }
+    }
+    .menu {
+        li:hover{
+            ul{
+                display: block;
             }
         }
     }

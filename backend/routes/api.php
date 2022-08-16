@@ -29,8 +29,8 @@ https://dev.to/thiagoluna/resolvendo-problema-de-access-control-allow-origin-cor
 Route::resource: O método Route::resource é um controlador RESTful
 */
 Route::get('/', [HomeController::class, "index"]);
-Route::resource('/products',ProductController::class );
-Route::get('/clients', [ClientController::class, "index"]);
-Route::get('/client/{id}', [ClientController::class, "index"]);
+Route::resource('/products',ProductController::class);
+Route::resource('/clients', ClientController::class);
+
 
 
